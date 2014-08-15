@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# 
+# This quick script converts the student roster output of Powerschool to something TypingWeb will import.
+#
+
+# Python 2 compatibility
+from __future__ import print_function, division, absolute_import, unicode_literals
+
+
 import csv
 
 def main():
