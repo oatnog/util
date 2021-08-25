@@ -1,0 +1,18 @@
+[Unit]
+Description=Continuous Integration Server
+
+[Service]
+WorkingDirectory=/var/lib/jenkins
+Environment="JENKINS_HOME=/var/lib/jenkins"
+Environment="JENKINS_USER=jenkins"
+Environment="JENKINS_GROUP=jenkins"
+PIDFile=/var/run/jenkins/jenkins.pid
+ExecStart=/bin/java -Djava.awt.headless=true -jar /usr/share/jenkins/jenkins.war --webroot=/var/cache/jenkins/war --httpPort=8080 
+ExecStop=/bin/kill -s HUP $MAINPID
+User=jenkins
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
